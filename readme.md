@@ -1,6 +1,7 @@
 # Spring Boot 3.0 Api - Security - with OpenApi Swagger 
 
 Create spring boot maven project: spring boot 3.0.6, java 17: with dependencies:
+
 - Spring Web
 - Lombok
 - Spring Security
@@ -18,7 +19,7 @@ spring:
       password: clave
 ```
 
-## OpenAPIDefinition
+## Springdoc OpenAPI
 
 Add dependency maven, by spring boot 3, use https://springdoc.org/v2/
 
@@ -36,7 +37,7 @@ In main class, use **OpenAPIDefinition** annotation
 
 ```java
 @SpringBootApplication
-@OpenAPIDefinition(info = @Info(title = "Product API with security JWT", version = "1.0.0"))
+@OpenAPIDefinition(info = @Info(title = "Product API with security", version = "1.0.0"))
 
 public class Demo01Application {
 ```
@@ -45,7 +46,7 @@ In RestController, use **Tag** annotation
 
 ```java
 @Tag(name = "Product", description = "Product API")
-``
+```
 
 Add configuration SecurityConfig class, add beans: csrf: read and write access
 
@@ -80,3 +81,6 @@ add schema in RestControllers
 ```java
 @SecurityRequirement(name = "demoapi")
 ```
+
+Now, button is visible
+

@@ -12,7 +12,7 @@ import io.swagger.v3.oas.annotations.security.SecurityScheme;
 
 
 @SpringBootApplication
-@OpenAPIDefinition(info = @Info(title = "Product API with security JWT", version = "1.0.0"))
+@OpenAPIDefinition(info = @Info(title = "Product API with security", version = "1.0.0"))
 @SecurityScheme(name = "demoapi", scheme = "basic", type = SecuritySchemeType.HTTP, in = SecuritySchemeIn.HEADER)
 
 public class Demo01Application {
