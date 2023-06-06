@@ -84,3 +84,73 @@ add schema in RestControllers
 
 Now, button is visible
 
+## Docker
+
+Create dockerfile, using image base **eclipse-temurin:17-jre-alpine**
+
+```docker
+FROM --platform=linux/x86_64 eclipse-temurin:17-jre-alpine
+ARG JAVA_OPTS
+ENV JAVA_OPTS=$JAVA_OPTS
+COPY target/demo01-0.0.1-SNAPSHOT.jar demo01.jar
+EXPOSE 8080
+ENTRYPOINT exec java $JAVA_OPTS -Djava.security.egd=file:/dev/./urandom -jar demo01.jar
+```
+
+Compile spring boot project using maven
+
+```sh
+ mvn clean package
+```
+
+docker build -t mzavaletav/springboot-security-basic-demo:1 .
+
+docker push  mzavaletav/springboot-security-basic-demo:1
+
+## Demo full
+
+Create namespace **springboot-demo**, if exists, remove:
+
+Check:
+
+```sh
+kubectl get ns
+```
+Exits? remove:
+
+```sh
+kubectl delete ns springboot-demo
+```
+
+Create namespaces
+
+```sh
+ kubectl apply -f k8s/01-namespace.yml
+```
+
+Set default namespace
+
+```sh
+kubectl config set-context --current --namespace=springboot-demo
+```
+Create service:
+```sh
+kubectl apply -f k8s/02-deployment.yml 
+```
+Get port number type nodeport:
+
+```cmd
+kubectl get services
+```
+Using port number in PORT_NUMBER, access 
+
+http://localhost:{PORT_NUMBER}/swagger-ui/index.html
+
+Credentials:
+
+user/p4$$w0rd
+
+
+Create request, copying curl in url or using Import
+
+

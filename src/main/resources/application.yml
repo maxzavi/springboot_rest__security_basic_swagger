@@ -3,4 +3,4 @@ spring:
   security:
     user:
       name: user
-      password: clave
+      password: p4$$w0rd
